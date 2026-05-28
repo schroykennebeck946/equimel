@@ -1,0 +1,4 @@
+include 'configs/experiment/_ablation_base.gin'
+
+build_runspec.workdir = "runs/ablation_fairness"
+build_runspec.mechanisms = ["fairness"]

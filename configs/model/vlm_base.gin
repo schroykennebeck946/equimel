@@ -1,0 +1,13 @@
+build_runspec.image_size = 224
+build_runspec.patch_size = 16
+build_runspec.vision_dim = 768
+build_runspec.vision_depth = 12
+build_runspec.vision_heads = 12
+build_runspec.text_dim = 768
+build_runspec.text_depth = 12
+build_runspec.text_heads = 12
+build_runspec.text_vocab = 30522
+build_runspec.max_text_len = 64
+build_runspec.embed_dim = 512
+build_runspec.num_groups = 6
+build_runspec.use_real_backbones = True

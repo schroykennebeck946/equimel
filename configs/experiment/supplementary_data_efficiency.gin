@@ -1,0 +1,7 @@
+include 'configs/model/vlm_base.gin'
+include 'configs/data/fairness_panels.gin'
+include 'configs/train/federated_adam.gin'
+
+build_runspec.workdir = "runs/supplementary_data_efficiency"
+build_runspec.samples_per_site = 64
+build_runspec.mechanisms = ["vla", "dg", "fairness"]

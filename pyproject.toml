@@ -1,0 +1,96 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "equimel"
+version = "0.1.0"
+description = "Federated vision-language model with domain generalization for equitable melanoma screening"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+keywords = [
+    "federated-learning",
+    "vision-language",
+    "domain-generalization",
+    "melanoma",
+    "health-equity",
+]
+dependencies = [
+    "torch>=2.2,<3",
+    "torchvision>=0.17",
+    "transformers>=4.40",
+    "numpy>=1.24",
+    "scipy>=1.11",
+    "scikit-learn>=1.3",
+    "gin-config>=0.5",
+    "absl-py>=2.0",
+    "pillow>=10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "black>=24.0",
+    "isort>=5.13",
+    "mypy>=1.11",
+]
+export = ["onnx>=1.16"]
+
+[project.scripts]
+equimel-train = "equimel.fieldbook.chart:entry"
+equimel-evaluate = "equimel.fieldbook.review:entry"
+equimel-infer = "equimel.fieldbook.locate:entry"
+equimel-export = "equimel.fieldbook.emit:entry"
+equimel-ablate = "equimel.fieldbook.vary:entry"
+equimel-crosssite = "equimel.fieldbook.traverse:entry"
+equimel-scaling = "equimel.fieldbook.sweep:entry"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+equimel = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+src_paths = ["src", "tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "C4", "RUF"]
+ignore = ["B008"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B018"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+files = ["src/equimel"]
+mypy_path = "src"
+explicit_package_bases = true
+warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+module = ["gin.*", "absl.*", "PIL.*"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["transformers.*", "torchvision.*", "sklearn.*", "scipy.*"]
+ignore_missing_imports = true
+follow_imports = "skip"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,7 @@
+include 'configs/model/vlm_base.gin'
+include 'configs/data/seven_datasets.gin'
+include 'configs/train/federated_adam.gin'
+
+build_runspec.workdir = "runs/supplementary_crosssite"
+build_runspec.held_out = ["ddi", "derm7pt"]
+build_runspec.mechanisms = ["vla", "dg", "fairness"]

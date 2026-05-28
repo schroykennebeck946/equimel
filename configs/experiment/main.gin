@@ -1,0 +1,10 @@
+include 'configs/model/vlm_base.gin'
+include 'configs/data/seven_datasets.gin'
+include 'configs/train/federated_adam.gin'
+
+build_runspec.workdir = "runs/main"
+build_runspec.seeds = [
+    42, 123, 256, 512, 1024, 2048, 3072, 4096,
+    5120, 6144, 7168, 8192, 9216, 10240, 11264,
+]
+build_runspec.mechanisms = ["vla", "dg", "fairness"]

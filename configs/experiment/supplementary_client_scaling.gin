@@ -1,0 +1,7 @@
+include 'configs/model/vlm_base.gin'
+include 'configs/data/fairness_panels.gin'
+include 'configs/train/federated_adam.gin'
+
+build_runspec.workdir = "runs/supplementary_client_scaling"
+build_runspec.num_clients = 10
+build_runspec.mechanisms = ["vla", "dg", "fairness"]

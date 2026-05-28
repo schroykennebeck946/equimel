@@ -1,0 +1,17 @@
+name: equimel
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip>=24.0
+  - pytorch>=2.2
+  - torchvision>=0.17
+  - numpy>=1.24
+  - scipy>=1.11
+  - scikit-learn>=1.3
+  - pillow>=10.0
+  - pip:
+      - transformers>=4.40
+      - gin-config>=0.5
+      - absl-py>=2.0
